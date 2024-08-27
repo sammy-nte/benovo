@@ -24,11 +24,19 @@ export default {
       maxWidth : {
         "containerMax": "1350px"
       },
+      boxShadow: {
+        'custom': 'inset -6px 6px 19px #e0e0e0, inset 6px -6px 19px #ffffff;',
+        'contactBox': 'inset -6px 6px 12px #e3e6ed, inset 6px -6px 12px #fbfeff'
+      },
       animation: {
         logoSlide: "10s slide infinite linear"
+      },
+      screens:{
+        'max-1000' : {'max': '1000px'}
       }
     }
   },
   plugins: [
+    require('@tailwindcss/forms')
   ]
 };
