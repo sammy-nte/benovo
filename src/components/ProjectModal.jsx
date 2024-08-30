@@ -1,13 +1,16 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setModalData } from "../redux/redux-features/modalDataSlice";
-import { Link } from "react-router-dom";
 
 function ProjectModal() {
   const { modalData } = useSelector(store => store.modalData);
   const dispatch = useDispatch();
-  console.log(modalData.donors)
-  
+  const ngoProfile = modalData.ngo;
+
+  const navigateToNgoProfile = (ngoProfileId) => {
+    window.location.assign(`/ngo-profile/${ngoProfileId}`)
+  };
+
   return (
     <div className="fixed flex justify-center items-center top-0 left-0 w-full h-full bg-gray-950 bg-opacity-40 z-10 backdrop-blur-sm ">
       <div className="bg-white w-full h-full lg:w-[1200px] lg:h-[500px] overflow-y-auto  shadow-lg rounded-lg p-3">
@@ -30,6 +33,14 @@ function ProjectModal() {
               <p>
                 {modalData.location}
               </p>
+              <button
+                onClick={()=>{
+                  navigateToNgoProfile(ngoProfile)
+                }}
+                className="my-2 w-[100px] h-8 border-tempColor border-2 mr-2 rounded-md text-textColor  font-medium text-sm hover:bg-tempColor hover:text-white transition-all"
+              >
+                View Profile
+              </button>
             </div>
             <button
               onClick={() => {
@@ -113,7 +124,7 @@ function ProjectModal() {
                 </ul>
               </div>
               <hr />
-              <div className="bg-violetLight">
+              {/* <div className="bg-violetLight">
                 <h2 className="font-bold text-white p-2">Current Donors</h2>
               </div>
               <div className="px-3">
@@ -128,7 +139,7 @@ function ProjectModal() {
                     </a>
                   </li>
                 </ul>
-              </div>
+              </div> */}
             </div>
           </section>
           <div className="flex w-[70%] mx-auto justify-evenly mt-8">

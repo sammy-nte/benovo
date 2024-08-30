@@ -38,9 +38,11 @@ function Explore() {
     [scrollPosition]
   );
 
-  const cards = projectData && projectData.map((items, index) =>
-    <CashCard key={items.id} items={items} index={index} />
-  );
+  const cards =
+    projectData &&
+    projectData.map((items, index) =>
+      <CashCard key={items.id} items={items} index={index} />
+    );
 
   const bg = {
     backgroundColor: scrollPosition > 665 ? "white" : "transparent"
@@ -76,12 +78,9 @@ function Explore() {
                 features and innovative solutions we have developed!
               </p>
               <form className="w-[100%] p-1 flex mt-5 items-center border-2 rounded-full justify-between md:w-[700px]">
-                <button
-                  // onClick={handleSearchInput}
-                  className="w-[50px] h-[50px] grid place-content-center rounded-full border-2 text-textColor font-medium ml-1 bg-tempColor transition-all hover:scale-110"
-                >
+                {/* <button className="w-[50px] h-[50px] grid place-content-center rounded-full border-2 text-textColor font-medium ml-1 bg-tempColor transition-all hover:scale-110"> // onClick={handleSearchInput}
                   <SearchSvg width="30px" />
-                </button>
+                </button> */}
                 <div className="w-[90%] relative rounded-full overflow-hidden">
                   <input
                     placeholder="Search..."
@@ -108,61 +107,17 @@ function Explore() {
           </div>
         </div>
       </section>
-      {scrollPosition > 460 &&
-        <section
-          style={bg}
-          className="w-full bg-white sticky top-[48px] h-[60px] mx-auto flex justify-evenly items-center"
-        >
-          <form className="w-[70%] p-1 flex items-center border-2 rounded-full justify-between h-[50px] lg:w-[50%]">
-            <button
-              // onClick={handleSearchInput}
-              className="w-[40px] h-[40px] grid place-content-center rounded-full border-2 text-textColor font-medium ml-1 bg-tempColor transition-all hover:scale-110"
-            >
-              <SearchSvg width="20px" />
-            </button>
-            <div className="w-[90%] relative rounded-full overflow-hidden">
-              <input
-                placeholder="Search..."
-                className="relative bg-transparent ring-0 outline-none  text-neutral-900 placeholder-violet-700 text-xl rounded-lg focus:ring-violet-500 placeholder-opacity-60 focus:border-violet-500 block w-full p-2.5 checked:bg-emerald-500"
-                type="text"
-                // onChange={handleInputChange}
-                // value={inputValue}
-              />
+      {projectData.length > 0
+        ? <section className="mt-5 bg-pink-20 grid grid-cols-3  gap-8 place-items-center max-w-containerMax mx-auto">
+            {cards}
+          </section>
+        : <section className="mt-5 bg-pink-20 grid place-content-center max-w-containerMax mx-auto">
+            <div className="w-[600px] h-32 border-4 border-dashed grid place-content-center">
+              <p className="text-gray-500 text-xl">
+                There are currently no campaigns
+              </p>
             </div>
-          </form>
-          <button className="w-[100px] h-[30px] rounded-lg flex items-center justify-center border-2 font-medium ml-1 text-tempColor border-tempColor transition-all">
-            <FilterSvg width="20px" stroke="rgba(103,128,255,1)" />
-            Filter
-          </button>
-          {/* <div className="w-[260px] mr-4 flex space-x-2 select-none">
-          <label className="h-[40px] flex flex-grow items-center justify-center rounded-lg cursor-pointer border-2 border-tempColor">
-          <input
-          type="radio"
-          name="type-radio"
-          value="material"
-          className="peer hidden"
-          />
-          <span className="h-[40px] w-full grid place-content-center tracking-widest peer-checked:bg-tempColor  peer-checked:text-white text-gray-700 rounded-lg transition duration-150 ease-in-out">
-          Material
-          </span>
-          </label>
-          
-          <label className="h-[40px] flex flex-grow items-center justify-center rounded-lg cursor-pointer border-2 border-tempColor">
-          <input
-          type="radio"
-          name="type-radio"
-          value="monetary"
-          className="peer hidden"
-          />
-          <span className="h-[40px] w-full grid place-content-center tracking-widest peer-checked:bg-tempColor peer-checked:text-white text-gray-700 rounded-lg transition duration-150 ease-in-out">
-          Monetary
-          </span>
-          </label>
-          </div> */}
-        </section>}
-      <section className="mt-5 bg-pink-20 grid grid-cols-4 gap-8 place-items-center max-w-containerMax mx-auto">
-        {cards}
-      </section>
+          </section>}
     </div>
   );
 }

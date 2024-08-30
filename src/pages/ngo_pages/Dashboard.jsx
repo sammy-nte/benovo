@@ -187,40 +187,40 @@ function Dashboard() {
               </div>}
         </div>
         <div className="bg-yellow-20 border-2 rounded-lg xl:col-span-3 xl:row-span-3">
-          <p>a</p>
+          <p></p>
         </div>
         <div className="bg-pik-200 grid gap-5 place-items-center mt-8 grid-cols-2 rounded-lg md:grid-cols-3 xl:mt-0 xl:col-span-2 xl:row-span-3 xl:grid-cols-3 xl:place-items-center">
           <div className="rounded-xl w-[150px] h-[130px] bg-gradient-to-tr from-white via-[#f8fefe] to-[#d7f4f7] border flex flex-col justify-around p-3 ">
             <BanknotesIcon className="size-8 " />
-            <p className="font-medium text-textColor">Ghc 1000000</p>
+            <p className="font-medium text-textColor">Ghc 0</p>
             <p className="font-medium text-gray-400 text-sm -mt-2">
               Donations Today
             </p>
           </div>
           <div className="rounded-xl w-[150px] h-[130px] bg-gradient-to-tr from-white via-[#f8fefe] to-[#d7f4f7] border flex flex-col justify-around p-3 ">
             <CursorArrowRaysIcon className="size-8" />
-            <p className="font-medium text-textColor">100</p>
+            <p className="font-medium text-textColor">0</p>
             <p className="font-medium text-gray-400 text-sm -mt-2">
               Views Today
             </p>
           </div>
           <div className="rounded-xl w-[150px] h-[130px] bg-gradient-to-tr from-white via-[#f8fefe] to-[#d7f4f7] border flex flex-col justify-around p-3 ">
             <UsersIcon className="size-8" />
-            <p className="font-medium text-textColor">1000</p>
+            <p className="font-medium text-textColor">{ngoInfo[0].todaysDonation}</p>
             <p className="font-medium text-gray-400 text-sm -mt-2">
               Donors Today
             </p>
           </div>
           <div className="rounded-xl w-[150px] h-[130px] bg-gradient-to-tr from-white via-[#f8fefe] to-[#d7f4f7] border flex flex-col justify-around p-3 ">
             <BanknotesIcon className="size-8" />
-            <p className="font-medium text-textColor">Ghc 1000000</p>
+            <p className="font-medium text-textColor">Ghc 0</p>
             <p className="font-medium text-gray-400 text-sm -mt-2">
               Total Donations
             </p>
           </div>
           <div className="rounded-xl w-[150px] h-[130px] bg-gradient-to-tr from-white via-[#f8fefe] to-[#d7f4f7] border flex flex-col justify-around p-3 ">
             <CursorArrowRaysIcon className="size-8" />
-            <p className="font-medium text-textColor">100</p>
+            <p className="font-medium text-textColor">0</p>
             <p className="font-medium text-gray-400 text-sm -mt-2">
               Total Views
             </p>
@@ -228,7 +228,7 @@ function Dashboard() {
           <div className="rounded-xl w-[150px] h-[130px] bg-gradient-to-tr from-white via-[#f8fefe] to-[#d7f4f7] border flex flex-col justify-around p-3 ">
             <UsersIcon className="size-8" />
             <p className="font-medium text-textColor">
-              {/* {ngoInfo[0]?.donors.length || 0} */}
+              {ngoInfo[0].totalDonation}
             </p>
             <p className="font-medium text-gray-400 text-sm -mt-2">
               Total Donors

@@ -27,33 +27,43 @@ function DashboardCampaignCard({ data }) {
         <p className="font-medium text-sm px-2">
           {data.campaignTitle}
         </p>
-        <button
-          onClick={() => {
-            dispatch(setCampaignEdit(data));
-          }}
-          className="w-[94%] mx-auto border-tempColor border h-[40px] flex items-center justify-center rounded-md cursor-pointer relative overflow-hidden transition-all duration-500 ease-in-out shadow-md hover:scale-100 hover:shadow-lg before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-tempColor before:transition-all before:duration-500 before:ease-in-out before:z-[-1] before:rounded-md  hover:before:left-0 hover:text-white text-textColor font-medium lg:h[30px]"
-        >
-          Edit Campaign
-        </button>
+        <div className="flex">
+          <button
+            onClick={() => {
+              dispatch(setCampaignEdit(data));
+            }}
+            className="w-[34%] mx-auto border-tempColor border h-[30px] flex items-center justify-center rounded-md cursor-pointer relative overflow-hidden transition-all duration-500 ease-in-out shadow-md hover:scale-100 hover:shadow-lg before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-tempColor before:transition-all before:duration-500 before:ease-in-out before:z-[-1] before:rounded-md  hover:before:left-0 hover:text-white text-textColor font-medium lg:h[30px]"
+          >
+            Edit
+          </button>
+          <button
+            onClick={() => {
+              dispatch(setCampaignEdit(data));
+            }}
+            className="w-[34%] mx-auto border-tempColor border h-[30px] flex items-center justify-center rounded-md cursor-pointer relative overflow-hidden transition-all duration-500 ease-in-out shadow-md hover:scale-100 hover:shadow-lg before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-tempColor before:transition-all before:duration-500 before:ease-in-out before:z-[-1] before:rounded-md  hover:before:left-0 hover:text-white text-textColor font-medium lg:h[30px]"
+          >
+            Details
+          </button>
+        </div>
       </div>
       {data.campaignType === "monetary"
         ? <div className="grid grid-cols-3 gap-2 bg-gray-100 border-t-2 rounded-br-lg rounded-bl-lg ">
             <div className="text-center b-yellow-200 px-1">
               <p className="text-gray-700 text-sm">Raised</p>
               <p className="font-medium text-base">
-                ${data.currentAmount}
+                ₵{data.currentAmount}
               </p>
             </div>
             <div className="text-center b-yellow-200 px-1">
               <p className="text-gray-700 text-sm">Goals</p>
               <p className="font-medium text-base">
-                ${data.targetAmount}
+                ₵{data.targetAmount}
               </p>
             </div>
             <div className="text-center g-yellow-200  px-1 text-wrap">
               <p className="text-gray-700 text-sm">Left</p>
               <p className="font-medium text-base ">
-                ${data.targetAmount - data.currentAmount}
+                ₵{data.targetAmount - data.currentAmount}
               </p>
             </div>
           </div>

@@ -3,37 +3,17 @@ import React from "react";
 function About() {
   const people = [
     {
-      name: "Leslie Alexander",
+      name: "Samuel Ntewusu",
       role: "Co-Founder / CEO",
       imageUrl:
         "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
     },
     {
-      name: "Leslie Alexander",
-      role: "Co-Founder / CEO",
-      imageUrl:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-    },
-    {
-      name: "Leslie Alexander",
-      role: "Co-Founder / CEO",
-      imageUrl:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-    },
-    ,
-    {
-      name: "Leslie Alexander",
-      role: "Co-Founder / CEO",
-      imageUrl:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-    },
-    {
-      name: "Leslie Alexander",
-      role: "Co-Founder / CEO",
+      name: "Johnnie",
+      role: "Co-Founder",
       imageUrl:
         "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
     }
-    // More people...
   ];
   return (
     <div>
@@ -143,7 +123,7 @@ function About() {
                     </span>
                   </li>
                 </ul>
-                <h2 className="mt-16 text-2xl font-bold tracking-tight text-gray-900">
+                {/* <h2 className="mt-16 text-2xl font-bold tracking-tight text-gray-900">
                   No server? No problem.
                 </h2>
                 <p className="mt-6">
@@ -153,7 +133,7 @@ function About() {
                   Maecenas pellentesque id sed tellus mauris, ultrices mauris.
                   Tincidunt enim cursus ridiculus mi. Pellentesque nam sed
                   nullam sed diam turpis ipsum eu a sed convallis diam.
-                </p>
+                </p> */}
               </div>
             </div>
           </div>
@@ -210,8 +190,8 @@ function About() {
               Meet The Benevo Team
             </h2>
             <p className="mt-6 text-lg leading-8 text-gray-600">
-              Libero fames augue nisl porttitor nisi, quis. Id ac elit odio
-              vitae elementum enim vitae ullamcorper suspendisse.
+              A dedicated team united by a shared vision to inspire positivity
+              and drive meaningful change.
             </p>
           </div>
           <ul

@@ -96,6 +96,7 @@ function AddCampaign({ setAddCampaign }) {
         ...campaignWithId
       });
       toast.success("Campaign posted successfully");
+      setAddCampaign(false)
     } catch (error) {
       console.error("Error adding campaign:", error);
       toast.error("Campaign failed to post: " + error.message);

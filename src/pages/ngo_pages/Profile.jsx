@@ -42,49 +42,79 @@ export async function loader() {
   });
 }
 
+const getRandomProjects = (campaignData, count = 3) => {
+  if (campaignData.length <= count) {
+    return campaignData;
+  }
+
+  const results = [];
+  while (results.length < count) {
+    const randomIndex = Math.floor(Math.random() * campaignData.length);
+    const data = campaignData[randomIndex];
+    if (!results.some(item => item.campaignTitle === data.campaignTitle)) {
+      results.push(data);
+    }
+  }
+
+  return results;
+};
+
 function Profile() {
   const [expand, setExpand] = useState(false);
   const [expandActiveCampaigns, setExpandActiveCampaigns] = useState(false);
+  const [expandCompletedCampaigns, setExpandCompletedCampaigns] = useState(
+    false
+  );
   const [showUpdateForm, setShowUpdateForm] = useState(false);
-  const [featuredProjects, setFeaturedProjects] = useState([]);
+  const [activeFeaturedProjects, setActiveFeaturedProjects] = useState([]);
   const [activeCampaignData, setActiveCampaignData] = useState([]);
+  const [completedCampaignData, setCompletedCampaignData] = useState([]);
+  const [completedFeaturedProjects, setCompletedFeaturedProjects] = useState(
+    []
+  );
   const profileInfo = useLoaderData();
 
   // console.log(profileInfo)
 
-  useEffect(() => {
-    if (profileInfo && profileInfo.length > 0) {
-      const { activeCampaigns } = profileInfo[0];
-      if (activeCampaigns) {
-        setActiveCampaignData(activeCampaigns);
-      }
-    }
-  }, [profileInfo]);
-  // console.log(profileInfo[0])
-  // console.log(activeCampaignData)
-
-  useEffect(() => {
-    if (activeCampaignData.length > 0 && activeCampaignData.length > 2) {
-      const results = [];
-      while (results.length < 3) {
-        const randomIndex = Math.floor(Math.random() * activeCampaignData.length);
-        const data = activeCampaignData[randomIndex];
-        if (!results.some(item => item.campaignTitle === data.campaignTitle)) {
-          results.push(data);
+  useEffect(
+    () => {
+      if (profileInfo && profileInfo.length > 0) {
+        const { activeCampaigns, completedCampaigns } = profileInfo[0];
+        if (activeCampaigns) {
+          setActiveCampaignData(activeCampaigns);
+        }
+        if (completedCampaigns) {
+          setCompletedCampaignData(completedCampaigns);
         }
       }
-      setFeaturedProjects(results);
-    } else{
-      setFeaturedProjects(activeCampaignData)
-    }
-  }, [activeCampaignData]);
+    },
+    [profileInfo]
+  );
 
-  const cards = expandActiveCampaigns
+  useEffect(
+    () => {
+      const activeFeatured = getRandomProjects(activeCampaignData);
+      const completedFeatured = getRandomProjects(completedCampaignData);
+
+      setActiveFeaturedProjects(activeFeatured);
+      setCompletedFeaturedProjects(completedFeatured);
+    },
+    [activeCampaignData, completedCampaignData]
+  );
+
+  const activeCards = expandActiveCampaigns
     ? activeCampaignData.map((items, index) =>
         <CampaignCard key={items.campaignTitle} items={items} index={index} />
       )
-    : featuredProjects.map((items, index) =>
+    : activeFeaturedProjects.map((items, index) =>
         <CampaignCard key={items.campaignTitle} items={items} index={index} />
+      );
+  const completedCards = expandActiveCampaigns
+    ? completedCampaignData.map((items, index) =>
+        <CampaignCard completed={true} key={items.campaignTitle} items={items} index={index} />
+      )
+    : completedFeaturedProjects.map((items, index) =>
+        <CampaignCard completed={true} key={items.campaignTitle} items={items} index={index} />
       );
 
   // console.log(ngoCampaignData);
@@ -300,21 +330,47 @@ function Profile() {
                 <h3 className="text-center my-4 font-medium text-lg">
                   Active Campaigns
                 </h3>
-                {cards.length > 0
-                  ? <div className="grid grid-cols-1 gap-5 md:grid-cols-3 bg-white p-4 rounded-2xl">
-                      {cards}
+                {activeCards.length > 0
+                  ? <div className="grid grid-cols-1 gap-5  md:grid-cols-3 bg-white p-4 rounded-2xl">
+                      {activeCards}
                     </div>
                   : <div className="w-[600px] h-32 border-4 border-dashed grid place-content-center">
-                      <p className="text-gray-500 text-xl">There are currently no active campaigns</p>
+                      <p className="text-gray-500 text-xl">
+                        There are currently no active campaigns
+                      </p>
                     </div>}
-                {cards.length > 1 && <button
-                  onClick={() => {
-                    setExpandActiveCampaigns(prevState => !prevState);
-                  }}
-                  className="w-[130px] mt-8 h-8 bg-white border-2 border-tempColor mr-2 rounded-md text-tempColor font-medium text-sm hover:bg-tempColor hover:text-white transition-all"
-                >
-                  {expandActiveCampaigns ? "View Less" : "View More"}
-                </button>}
+                {activeCards.length > 1 &&
+                  <button
+                    onClick={() => {
+                      setExpandActiveCampaigns(prevState => !prevState);
+                    }}
+                    className="w-[130px] mt-8 h-8 bg-white border-2 border-tempColor mr-2 rounded-md text-tempColor font-medium text-sm hover:bg-tempColor hover:text-white transition-all"
+                  >
+                    {expandActiveCampaigns ? "View Less" : "View More"}
+                  </button>}
+              </section>
+              <section className="mt-8 flex flex-col items-center">
+                <h3 className="text-center my-4 font-medium text-lg">
+                  Completed Campaigns
+                </h3>
+                {completedCards.length > 0
+                  ? <div className="grid grid-cols-1 gap-5  md:grid-cols-3 bg-white p-4 rounded-2xl">
+                      {completedCards}
+                    </div>
+                  : <div className="w-[600px] h-32 border-4 border-dashed grid place-content-center">
+                      <p className="text-gray-500 text-xl">
+                        There are currently no complete campaigns
+                      </p>
+                    </div>}
+                {completedCards.length > 1 &&
+                  <button
+                    onClick={() => {
+                      setExpandCompletedCampaigns(prevState => !prevState);
+                    }}
+                    className="w-[130px] mt-8 h-8 bg-white border-2 border-tempColor mr-2 rounded-md text-tempColor font-medium text-sm hover:bg-tempColor hover:text-white transition-all"
+                  >
+                    {expandCompletedCampaigns ? "View Less" : "View More"}
+                  </button>}
               </section>
             </section>
           </div>}

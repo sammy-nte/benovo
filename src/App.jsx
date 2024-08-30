@@ -36,6 +36,7 @@ import { addProject } from "./redux/redux-features/projectSlice";
 import { collection, getDocs } from "firebase/firestore";
 import EditCampaign from "./components/Ngo-Components/EditCampaign";
 import MaterialDonation from "./components/MaterialDonation";
+import DeactivateCampaign from "./components/Ngo-Components/DeactivateCampaign";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -75,8 +76,9 @@ function App() {
 
   const { modalData } = useSelector(store => store.modalData);
   const { editCampaign } = useSelector(store => store.campaignEdit);
-  const { menu } = useSelector(store => store.menu);
+  // const { menu } = useSelector(store => store.menu);
   const { materialForm } = useSelector(store => store.donateForm);
+  const { Dedetails  } = useSelector(store => store.deactivate);
 
   useEffect(
     () => {
@@ -113,6 +115,7 @@ function App() {
       {modalData && <ProjectModal />}
       {editCampaign && <EditCampaign />}
       {materialForm.length > 0 && <MaterialDonation />}
+      {Dedetails && <DeactivateCampaign />}
       <ToastContainer position="top-center" />
       <RouterProvider router={router} />
     </div>

@@ -63,7 +63,7 @@ function MaterialDonation() {
       batch.update(ngoRef, {
         donors: arrayUnion(donorData),
         todaysDonation: increment(1),
-        totalDonation: increment(1)
+        totalDonations: increment(1)
       });
 
       // Fetch the NGO document to get activeCampaigns

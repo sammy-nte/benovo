@@ -52,15 +52,18 @@ function Campaigns() {
     }
   }, [ngoInfo]);
 
+  console.log(showCampaigns)
+
   // const cards = cardList.map(item => <DonorList key={item.name} data={item} />);
   const Dcards = showCampaigns.map(item =>
-    <DashboardCampaignCard key={item.id} data={item} />
+    // <DashboardCampaignCard key={item.id} data={item} />
+    <p>a</p>
   );
   return (
     <>
       {addCampaign
         ? <AddCampaign setAddCampaign={setAddCampaign} />
-        : <section className="bg-slate-20 lg:w-[94%] mx-auto flex flex-col">
+        : <section className="bg-slate-200 w-[1350px] mx-auto flex flex-col h-[100vh]">
             <button
               onClick={() => {
                 setAddCampaign(true);
@@ -73,7 +76,7 @@ function Campaigns() {
               <h2 className="font-bold text-textColor text-xl p-3">
                 Active Campaigns
               </h2>
-              <div className=" bg-pink-30 flex justify-between w-[90%] gap-8 flex-wrap mx-auto">
+              <div className=" bg-pink-30 grid grid-cols-1 place-items-center w-[98%] gap-8 mx-auto sm:grid-cols-2 lg:grid-cols-3">
                 {Dcards}
               </div>
               <button
