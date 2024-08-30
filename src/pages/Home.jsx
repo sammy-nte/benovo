@@ -30,13 +30,22 @@ function Home() {
     () => {
       if (projectData && projectData.length > 0) {
         let results = [];
-        while (results.length < 3) {
-          const randomIndex = Math.floor(Math.random() * projectData.length);
-          let data = projectData[randomIndex];
-          if (!results.some(item => item.id === data.id)) {
-            results.push(data);
+
+        if (projectData.length <= 3) {
+          // If there are 3 or fewer projects, use them all
+          results = projectData;
+        } else {
+          // If there are more than 3 projects, pick 3 unique random ones
+          while (results.length < 3) {
+            const randomIndex = Math.floor(Math.random() * projectData.length);
+            let data = projectData[randomIndex];
+
+            if (!results.some(item => item.id === data.id)) {
+              results.push(data);
+            }
           }
         }
+
         setFeaturedProjects(results);
       }
     },

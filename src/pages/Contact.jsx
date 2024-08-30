@@ -32,13 +32,13 @@ export default function Contact() {
           </div>
           <div className="con">
             <div className="contact-box">
-              <InstagramSvg width="50px"/>
+              <InstagramSvg link="https://www.instagram.com/" width="50px"/>
             </div>
             <div className="contact-box">
-              <WhatsappSvg width="50px" />
+              <WhatsappSvg link="https://wa.me/0257530839" width="50px" />
             </div>
             <div className="contact-box">
-              <FacebookSvg width="50px" />
+              <FacebookSvg link="https://web.facebook.com/login.php/?_rdc=1&_rdr" width="50px" />
             </div>
           </div>
         </div>

@@ -42,7 +42,7 @@ function PageFooter() {
             </div>
           </div>
           <dl className="grid grid-cols-1 gap-x-8 gap-y-2 sm:grid-cols-3 lg:pt-2">
-            <div className="flex flex-col items-start p-2">
+            {/* <div className="flex flex-col items-start p-2">
               <dt className="mt-4 font-semibold text-textColor">
                 Weekly articles
               </dt>
@@ -50,8 +50,8 @@ function PageFooter() {
                 Non laboris consequat cupidatat laborum magna. Eiusmod non irure
                 cupidatat duis commodo amet.
               </dd>
-            </div>
-            <div className="flex flex-col items-start p-2">
+            </div> */}
+            {/* <div className="flex flex-col items-start p-2">
               <h4 className="mt-4 font-semibold text-textColor">No spam</h4>
               <ul className="text-gray-500">
                 <li className="underline pb-1 underline-offset-4 cursor-pointer">
@@ -65,7 +65,7 @@ function PageFooter() {
                 </li>
                 <li className="underline pb-1 underline-offset-4 cursor-pointer" />
               </ul>
-            </div>
+            </div> */}
             <div className="flex flex-col items-start p-2 w-fit">
               <h4 className="mt-4 font-semibold text-textColor">
                 Get in touch
@@ -82,9 +82,12 @@ function PageFooter() {
               </div>
               <h4 className="mt-4 font-semibold text-textColor">Socials</h4>
               <div className="flex w-[120px] justify-between">
-                <FacebookSvg width="30px" />
-                <InstagramSvg width="35px" />
-                <WhatsappSvg width="35px" />
+                <FacebookSvg
+                  link="https://web.facebook.com/login.php/?_rdc=1&_rdr"
+                  width="30px"
+                />
+                <InstagramSvg link="https://www.instagram.com/" width="35px" />
+                <WhatsappSvg link="https://wa.me/0257530839" width="35px" />
               </div>
             </div>
           </dl>

@@ -59,7 +59,7 @@ function PageHeader() {
         {/* <button className="w-[100px] h-8 bg-tempColor mr-2 rounded-md text-white font-medium text-sm">
           New Campaign
         </button> */}
-        <Popover>
+        {/* <Popover>
           <PopoverButton className="text-sm/6 font-semibold text-black/50 focus:outline-none data-[active]:text-black data-[hover]:text-black data-[focus]:outline-1 data-[focus]:outline-black">
             <BellIcon className="size-7 mx-5" />
           </PopoverButton>
@@ -115,10 +115,10 @@ function PageHeader() {
               </div>
             </PopoverPanel>
           </Transition>
-        </Popover>
+        </Popover> */}
         <Menu>
           <MenuButton className="inline-flex w-[100px] items-center gap-2 rounded-md border-2 py-[.2em] px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-200 data-[open]:bg-gray-200 data-[focus]:outline-1 data-[focus]:outline-white transition-all">
-            <div className="w-[35px] h-[35px] bg-red-400 rounded-full" />
+            <div className="w-[35px] h-[35px] bg-tempColor rounded-full grid place-content-center">B</div>
             <ChevronDownIcon className="size-4 fill-black/60" />
           </MenuButton>
           <Transition
@@ -134,12 +134,12 @@ function PageHeader() {
               className="bg-tempColor w-52 origin-top-right rounded-xl border border-white/5 p-1 mt-3 text-sm/6 text-white [--anchor-gap:var(--spacing-1)] focus:outline-none"
             >
               <div className="my-1 h-px bg-white/5" />
-              <MenuItem>
+              {/* <MenuItem>
                 <button className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10">
                   <Cog6ToothIcon className="size-4 opacity-60" />
                   Settings
                 </button>
-              </MenuItem>
+              </MenuItem> */}
               <MenuItem>
                 <button onClick={signOutBtn} className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10">
                   <ArrowRightEndOnRectangleIcon className="size-4 opacity-60" />
@@ -168,12 +168,12 @@ function PageHeader() {
               className="bg-tempColor w-52 origin-top-right rounded-xl border border-white/5 p-1 mt-3 text-sm/6 text-white [--anchor-gap:var(--spacing-1)] focus:outline-none"
             >
               <div className="my-1 h-px bg-white/5" />
-              <MenuItem>
+              {/* <MenuItem>
                 <button className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10">
                   <Cog6ToothIcon className="size-4 opacity-60" />
                   Settings
                 </button>
-              </MenuItem>
+              </MenuItem> */}
               <MenuItem>
                 <button className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10">
                   <ArrowRightEndOnRectangleIcon className="size-4 opacity-60" />

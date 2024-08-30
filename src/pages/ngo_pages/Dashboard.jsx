@@ -76,23 +76,26 @@ function Dashboard() {
     [donorType, ngoInfo]
   );
 
-  useEffect(() => {
-    if (
-      ngoInfo &&
-      ngoInfo.length > 0 &&
-      ngoInfo[0].activeCampaigns.length > 0
-    ) {
-      const activeCampaigns = ngoInfo[0].activeCampaigns;
-      let dashboardCampaignList = [];
-      while (dashboardCampaignList.length < 3) {
-        for (let i = 0; i < 3; i++) {
-          const element = activeCampaigns[i];
-          dashboardCampaignList.push(element);
+  useEffect(
+    () => {
+      if (
+        ngoInfo &&
+        ngoInfo.length > 0 &&
+        ngoInfo[0].activeCampaigns.length > 0
+      ) {
+        const activeCampaigns = ngoInfo[0].activeCampaigns;
+        let dashboardCampaignList = [];
+        const loopAmount = Math.min(4, activeCampaigns.length); // Limit loopAmount to the length of activeCampaigns
+
+        for (let i = 0; i < loopAmount; i++) {
+          dashboardCampaignList.push(activeCampaigns[i]);
         }
+
+        setShowCampaigns(dashboardCampaignList);
       }
-      setShowCampaigns(dashboardCampaignList);
-    }
-  }, []);
+    },
+    [ngoInfo]
+  );
 
   const cards = cardList.map(item => <DonorList key={item.name} data={item} />);
   const Dcards = showCampaigns.map(item =>
@@ -171,7 +174,7 @@ function Dashboard() {
                 </p>
                 <button
                   onClick={() => {
-                    dispatch(closeDetails())
+                    dispatch(closeDetails());
                   }}
                   className="border-violetLight border-2 font-bold rounded-md col-span-2 hover:bg-tempColor hover:text-white transition-all"
                 >
@@ -187,10 +190,10 @@ function Dashboard() {
               </div>}
         </div>
         <div className="bg-yellow-20 border-2 rounded-lg xl:col-span-3 xl:row-span-3">
-          <p></p>
+          <p />
         </div>
         <div className="bg-pik-200 grid gap-5 place-items-center mt-8 grid-cols-2 rounded-lg md:grid-cols-3 xl:mt-0 xl:col-span-2 xl:row-span-3 xl:grid-cols-3 xl:place-items-center">
-          <div className="rounded-xl w-[150px] h-[130px] bg-gradient-to-tr from-white via-[#f8fefe] to-[#d7f4f7] border flex flex-col justify-around p-3 ">
+          {/* <div className="rounded-xl w-[150px] h-[130px] bg-gradient-to-tr from-white via-[#f8fefe] to-[#d7f4f7] border flex flex-col justify-around p-3 ">
             <BanknotesIcon className="size-8 " />
             <p className="font-medium text-textColor">Ghc 0</p>
             <p className="font-medium text-gray-400 text-sm -mt-2">
@@ -203,15 +206,17 @@ function Dashboard() {
             <p className="font-medium text-gray-400 text-sm -mt-2">
               Views Today
             </p>
-          </div>
+          </div> */}
           <div className="rounded-xl w-[150px] h-[130px] bg-gradient-to-tr from-white via-[#f8fefe] to-[#d7f4f7] border flex flex-col justify-around p-3 ">
             <UsersIcon className="size-8" />
-            <p className="font-medium text-textColor">{ngoInfo[0].todaysDonation}</p>
+            <p className="font-medium text-textColor">
+              {ngoInfo[0].todaysDonation}
+            </p>
             <p className="font-medium text-gray-400 text-sm -mt-2">
               Donors Today
             </p>
           </div>
-          <div className="rounded-xl w-[150px] h-[130px] bg-gradient-to-tr from-white via-[#f8fefe] to-[#d7f4f7] border flex flex-col justify-around p-3 ">
+          {/* <div className="rounded-xl w-[150px] h-[130px] bg-gradient-to-tr from-white via-[#f8fefe] to-[#d7f4f7] border flex flex-col justify-around p-3 ">
             <BanknotesIcon className="size-8" />
             <p className="font-medium text-textColor">Ghc 0</p>
             <p className="font-medium text-gray-400 text-sm -mt-2">
@@ -224,7 +229,7 @@ function Dashboard() {
             <p className="font-medium text-gray-400 text-sm -mt-2">
               Total Views
             </p>
-          </div>
+          </div> */}
           <div className="rounded-xl w-[150px] h-[130px] bg-gradient-to-tr from-white via-[#f8fefe] to-[#d7f4f7] border flex flex-col justify-around p-3 ">
             <UsersIcon className="size-8" />
             <p className="font-medium text-textColor">

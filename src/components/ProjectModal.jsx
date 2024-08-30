@@ -1,14 +1,15 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setModalData } from "../redux/redux-features/modalDataSlice";
+import { openMenu } from "../redux/redux-features/donateForm";
 
 function ProjectModal() {
   const { modalData } = useSelector(store => store.modalData);
   const dispatch = useDispatch();
   const ngoProfile = modalData.ngo;
 
-  const navigateToNgoProfile = (ngoProfileId) => {
-    window.location.assign(`/ngo-profile/${ngoProfileId}`)
+  const navigateToNgoProfile = ngoProfileId => {
+    window.location.assign(`/ngo-profile/${ngoProfileId}`);
   };
 
   return (
@@ -34,13 +35,14 @@ function ProjectModal() {
                 {modalData.location}
               </p>
               <button
-                onClick={()=>{
-                  navigateToNgoProfile(ngoProfile)
+                onClick={() => {
+                  navigateToNgoProfile(ngoProfile);
                 }}
                 className="my-2 w-[100px] h-8 border-tempColor border-2 mr-2 rounded-md text-textColor  font-medium text-sm hover:bg-tempColor hover:text-white transition-all"
               >
                 View Profile
               </button>
+              
             </div>
             <button
               onClick={() => {
@@ -124,22 +126,24 @@ function ProjectModal() {
                 </ul>
               </div>
               <hr />
-              {/* <div className="bg-violetLight">
-                <h2 className="font-bold text-white p-2">Current Donors</h2>
-              </div>
-              <div className="px-3">
-                <ul className="p-3">
-                  <li className="list-disc">
-                    Email: {modalData.contactInfo.email}
-                  </li>
-                  <li className="list-disc">
-                    Phone:{" "}
-                    <a href={`tel:${modalData.contactInfo.phone}`}>
-                      {modalData.contactInfo.phone}
-                    </a>
-                  </li>
-                </ul>
-              </div> */}
+              {modalData.campaignType === "material" &&
+                <div>
+                  <div className="bg-violetLight">
+                    <h2 className="font-bold text-white p-2">
+                      Want to donate money instead?
+                    </h2>
+                  </div>
+                  <div className="px-3">
+                    <button
+                      onClick={() => {
+                        window.location.href = "https://paystack.com/pay/myngo";
+                      }}
+                      className="my-4 w-[100px] h-8 bg-tempColor mr-2 rounded-md text-white font-medium text-sm"
+                    >
+                      Donate Now
+                    </button>
+                  </div>
+                </div>}
             </div>
           </section>
           <div className="flex w-[70%] mx-auto justify-evenly mt-8">

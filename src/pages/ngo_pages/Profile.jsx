@@ -74,8 +74,6 @@ function Profile() {
   );
   const profileInfo = useLoaderData();
 
-  // console.log(profileInfo)
-
   useEffect(
     () => {
       if (profileInfo && profileInfo.length > 0) {
@@ -111,10 +109,20 @@ function Profile() {
       );
   const completedCards = expandActiveCampaigns
     ? completedCampaignData.map((items, index) =>
-        <CampaignCard completed={true} key={items.campaignTitle} items={items} index={index} />
+        <CampaignCard
+          completed={true}
+          key={items.campaignTitle}
+          items={items}
+          index={index}
+        />
       )
     : completedFeaturedProjects.map((items, index) =>
-        <CampaignCard completed={true} key={items.campaignTitle} items={items} index={index} />
+        <CampaignCard
+          completed={true}
+          key={items.campaignTitle}
+          items={items}
+          index={index}
+        />
       );
 
   // console.log(ngoCampaignData);

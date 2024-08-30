@@ -24,50 +24,89 @@ export async function loader({ params }) {
   });
 }
 
+const getRandomProjects = (campaignData, count = 3) => {
+  if (campaignData.length <= count) {
+    return campaignData;
+  }
+
+  const results = [];
+  while (results.length < count) {
+    const randomIndex = Math.floor(Math.random() * campaignData.length);
+    const data = campaignData[randomIndex];
+    if (!results.some(item => item.campaignTitle === data.campaignTitle)) {
+      results.push(data);
+    }
+  }
+
+  return results;
+};
+
 function NgoProfile() {
   // const params = useParams();
   const profileInfo = useLoaderData();
   const [expand, setExpand] = useState(false);
-  const [expandCampaigns, setExpandCampaigns] = useState(false);
-  const [featuredProjects, setFeaturedProjects] = useState([]);
-  const [campaignData, setCampaignData] = useState([]);
+  const [expandActiveCampaigns, setExpandActiveCampaigns] = useState(false);
+  const [expandCompletedCampaigns, setExpandCompletedCampaigns] = useState(
+    false
+  );
+  const [activeFeaturedProjects, setActiveFeaturedProjects] = useState([]);
+  const [activeCampaignData, setActiveCampaignData] = useState([]);
+  const [completedFeaturedProjects, setCompletedFeaturedProjects] = useState(
+    []
+  );
+  const [completedCampaignData, setCompletedCampaignData] = useState([]);
 
   useEffect(
     () => {
-      if (profileInfo && profileInfo[0] && profileInfo[0].activeCampaigns) {
-        let results = [];
-        const projectData = profileInfo[0].activeCampaigns
-        setCampaignData(projectData)
-        if (projectData.length > 3) {
-          while (results.length < 3) {
-            const randomIndex = Math.floor(
-              Math.random() * projectData.length
-            );
-            let data = projectData[randomIndex];
-            if (!results.some(item => item.id === data.id)) {
-              results.push(data);
-            }
-          }
-        } else {
-          results.push(profileInfo[0].activeCampaigns);
+      if (profileInfo && profileInfo.length > 0) {
+        const { activeCampaigns, completedCampaigns } = profileInfo[0];
+        if (activeCampaigns) {
+          setActiveCampaignData(activeCampaigns);
         }
-        setFeaturedProjects(results);
-        // console.log(projectData)
+        if (completedCampaigns) {
+          setCompletedCampaignData(completedCampaigns);
+        }
       }
     },
     [profileInfo]
   );
 
-  // console.log(featuredProjects)
+  useEffect(
+    () => {
+      const activeFeatured = getRandomProjects(activeCampaignData);
+      const completedFeatured = getRandomProjects(completedCampaignData);
 
-  const cards = expandCampaigns
-      ? campaignData.map((items, index) =>
-          <CashCard key={items.id} items={items} index={index} />
-        )
-      : featuredProjects.map((items, index) =>
-          <CashCard key={items.id} items={items} index={index} />
-        )
+      setActiveFeaturedProjects(activeFeatured);
+      setCompletedFeaturedProjects(completedFeatured);
+    },
+    [activeCampaignData, completedCampaignData]
+  );
 
+  const activeCards = expandActiveCampaigns
+    ? activeCampaignData.map((items, index) =>
+        <CashCard key={items.id} items={items} index={index} />
+      )
+    : activeFeaturedProjects.map((items, index) =>
+        <CashCard key={items.id} items={items} index={index} />
+      );
+
+  const completedCards = expandCompletedCampaigns
+    ? completedCampaignData.map((items, index) =>
+        <CashCard
+          completed={true}
+          key={items.campaignTitle}
+          items={items}
+          index={index}
+        />
+      )
+    : completedFeaturedProjects.map((items, index) =>
+        <CashCard
+          completed={true}
+          key={items.campaignTitle}
+          items={items}
+          index={index}
+        />
+      );
 
   // console.log(profileInfo);
   return (
@@ -109,16 +148,15 @@ function NgoProfile() {
           <div className="hidden md:flex max-w-[1000px] mx-auto mt-1 justify-between">
             <div className="text-center">
               <h3 className="font-medium text-textColor">Website</h3>
-              {
-                profileInfo[0].website ? 
-              <a
-                href={profileInfo[0].website}
-                target="_blank"
-                className="text-tempColor font-medium underline underline-offset-3"
-              >
-                web link
-              </a> : <p>N/A</p>
-              }
+              {profileInfo[0].website
+                ? <a
+                    href={profileInfo[0].website}
+                    target="_blank"
+                    className="text-tempColor font-medium underline underline-offset-3"
+                  >
+                    web link
+                  </a>
+                : <p>N/A</p>}
             </div>
             <div className="text-center">
               <h3 className="font-medium text-textColor">Location</h3>
@@ -283,16 +321,39 @@ function NgoProfile() {
             Active Campaigns
           </h3>
           <div className="grid grid-cols-1 place-items-center gap-5 md:grid-cols-3 bg-white p-4 rounded-2xl">
-            {cards}
+            {activeCards}
           </div>
           <button
             onClick={() => {
-              setExpandCampaigns(prevState => !prevState);
+              setExpandActiveCampaigns(prevState => !prevState);
             }}
             className="w-[130px] mt-8 h-8 bg-white border-2 border-tempColor mr-2 rounded-md text-tempColor font-medium text-sm hover:bg-tempColor hover:text-white transition-all"
           >
-            {expandCampaigns ? "View Less" : "View More"}
+            {expandActiveCampaigns ? "View Less" : "View More"}
           </button>
+        </section>
+        <section className="mt-8 flex flex-col items-center">
+          <h3 className="text-center my-4 font-medium text-lg">
+            Completed Campaigns
+          </h3>
+          {completedCards.length > 0
+            ? <div className="grid grid-cols-1 gap-5  md:grid-cols-3 bg-white p-4 rounded-2xl">
+                {completedCards}
+              </div>
+            : <div className="w-[600px] h-32 border-4 border-dashed grid place-content-center">
+                <p className="text-gray-500 text-xl">
+                  There are currently no complete campaigns
+                </p>
+              </div>}
+          {completedCards.length > 1 &&
+            <button
+              onClick={() => {
+                setExpandCompletedCampaigns(prevState => !prevState);
+              }}
+              className="w-[130px] mt-8 h-8 bg-white border-2 border-tempColor mr-2 rounded-md text-tempColor font-medium text-sm hover:bg-tempColor hover:text-white transition-all"
+            >
+              {expandCompletedCampaigns ? "View Less" : "View More"}
+            </button>}
         </section>
       </section>
     </div>

@@ -172,13 +172,16 @@ export function InfiniteSvg({ width, height }) {
   );
 }
 
-export function InstagramSvg({ width, height }) {
+export function InstagramSvg({ width, height, link }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 48 48"
       width={width}
       height={height}
+      onClick={() => {
+        window.location.href = link;
+      }}
     >
       <path
         fill="#f48fb1"
@@ -217,13 +220,16 @@ export function InstagramSvg({ width, height }) {
   );
 }
 
-export function WhatsappSvg({ width, height }) {
+export function WhatsappSvg({ width, height, link }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 48 48"
       width={width}
       height={height}
+      onClick={() => {
+        window.location.href = link;
+      }}
     >
       <circle cx="28" cy="28" r="17" fill="#a5d6a7" />
       <path
@@ -250,7 +256,7 @@ export function WhatsappSvg({ width, height }) {
   );
 }
 
-export function FacebookSvg({ width, height, extraStyles }) {
+export function FacebookSvg({ width, height, extraStyles, link }) {
   return (
     <svg
       height={height}
@@ -261,6 +267,9 @@ export function FacebookSvg({ width, height, extraStyles }) {
       viewBox="0 0 512.001 512.001"
       xmlSpace="preserve"
       className={extraStyles}
+      onClick={() => {
+        window.location.href = link;
+      }}
     >
       <circle className="fill-[#1D81CE]" cx="256.001" cy="256" r="247.916" />
       <path

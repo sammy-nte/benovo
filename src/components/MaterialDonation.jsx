@@ -31,6 +31,7 @@ function MaterialDonation() {
     </option>
   );
   const dmethod = watch("dmethod");
+  console.log(dmethod)
 
   const onSubmit = async data => {
     let donorData = {
@@ -63,7 +64,7 @@ function MaterialDonation() {
       batch.update(ngoRef, {
         donors: arrayUnion(donorData),
         todaysDonation: increment(1),
-        totalDonations: increment(1)
+        totalDonation: increment(1)
       });
 
       // Fetch the NGO document to get activeCampaigns
@@ -240,9 +241,9 @@ function MaterialDonation() {
                           id="dropLocation"
                           className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                         >
-                          <option value="united-states">United States</option>
-                          <option value="canada">Canada</option>
-                          <option value="mexico">Mexico</option>
+                          <option value="gctu">GCTU</option>
+                          <option value="madina">Madina</option>
+                          <option value="adenta">Adenta</option>
                         </select>
                       </div>
                     </div>

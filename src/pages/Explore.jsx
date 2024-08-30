@@ -71,26 +71,12 @@ function Explore() {
           <div className="mx-auto max-w-containerMax py-32 sm:py-48 lg:py-56">
             <div className="text-center flex flex-col justify-center items-center">
               <h1 className="text-4xl font-bold tracking-tight text-textColor sm:text-3xl">
-                Search through our numerous projects
+                Browse through our numerous projects
               </h1>
               <p className="mt-6 text-lg leading-8 text-textColor font-light">
                 Explore our project in detail and discover all the exciting
                 features and innovative solutions we have developed!
               </p>
-              <form className="w-[100%] p-1 flex mt-5 items-center border-2 rounded-full justify-between md:w-[700px]">
-                {/* <button className="w-[50px] h-[50px] grid place-content-center rounded-full border-2 text-textColor font-medium ml-1 bg-tempColor transition-all hover:scale-110"> // onClick={handleSearchInput}
-                  <SearchSvg width="30px" />
-                </button> */}
-                <div className="w-[90%] relative rounded-full overflow-hidden">
-                  <input
-                    placeholder="Search..."
-                    className="relative bg-transparent ring-0 outline-none  text-neutral-900 placeholder-violet-700 text-xl rounded-lg focus:ring-violet-500 placeholder-opacity-60 focus:border-violet-500 block w-full p-2.5 checked:bg-emerald-500"
-                    type="text"
-                    // onChange={handleInputChange}
-                    // value={inputValue}
-                  />
-                </div>
-              </form>
             </div>
           </div>
           <div

@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { setCampaignEdit } from "../../redux/redux-features/campaignEditSlice";
 
-function DashboardCampaignCard({ data }) {
+function DashboardCampaignCard({ data, completed }) {
   const dispatch = useDispatch();
 
   // console.log(data);
@@ -20,14 +20,14 @@ function DashboardCampaignCard({ data }) {
         // alt="Children in Cellevon Village"
         className="w-full h-[220px] object-cover rounded-lg lg:h-[140px]"
       />
-      <div className="relative bg-geen-200 h-[78px] flex flex-col justify-between">
+      <div className="relative bg-geen-200 h-[78px] flex flex-col justify-between items-center">
         {/* <span className="absolute top-4 right-4 bg-blue-600 text-white text-xs px-2 py-1 rounded-full">
                 GOAL REACHED
               </span> */}
         <p className="font-medium text-sm px-2">
           {data.campaignTitle}
         </p>
-        <div className="flex">
+        {/* <div className="flex">
           <button
             onClick={() => {
               dispatch(setCampaignEdit(data));
@@ -44,9 +44,21 @@ function DashboardCampaignCard({ data }) {
           >
             Details
           </button>
-        </div>
+        </div> */}
+        {completed
+          ? <div className="grid place-content-center px-2 w-fit h-8 bg-green-500 rounded-md text-white font-medium text-sm">
+              <p>Campaign Completed</p>
+            </div>
+          : <button
+              onClick={() => {
+                dispatch(setCampaignEdit(data));
+              }}
+              className="w-[80%] mx-auto border-tempColor border h-[30px] flex items-center justify-center rounded-md cursor-pointer relative overflow-hidden transition-all duration-500 ease-in-out shadow-md hover:scale-100 hover:shadow-lg before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-tempColor before:transition-all before:duration-500 before:ease-in-out before:z-[-1] before:rounded-md  hover:before:left-0 hover:text-white text-textColor font-medium lg:h[30px]"
+            >
+              Edit
+            </button>}
       </div>
-      {data.campaignType === "monetary"
+      {/* {data.campaignType === "monetary"
         ? <div className="grid grid-cols-3 gap-2 bg-gray-100 border-t-2 rounded-br-lg rounded-bl-lg ">
             <div className="text-center b-yellow-200 px-1">
               <p className="text-gray-700 text-sm">Raised</p>
@@ -74,7 +86,8 @@ function DashboardCampaignCard({ data }) {
             <button className="bg-tempColor font-light h-[26px] grid place-content-center p-2 text-white rounded-sm transition duration-200 ease-in-out hover:bg-violetLight active:bg-purple-900 focus:outline-none">
               View Items
             </button>
-          </div>}
+          </div>} */}
+      <p>.</p>
     </div>
   );
 }

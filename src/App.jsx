@@ -37,6 +37,7 @@ import { collection, getDocs } from "firebase/firestore";
 import EditCampaign from "./components/Ngo-Components/EditCampaign";
 import MaterialDonation from "./components/MaterialDonation";
 import DeactivateCampaign from "./components/Ngo-Components/DeactivateCampaign";
+import { data } from "autoprefixer";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -86,7 +87,6 @@ function App() {
         if (user) {
           dispatch(setEmail(user.email));
           dispatch(setUid(user.uid));
-          // console.log(user)
         }
       });
       return () => unsubscribe();

@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { donationData } from "../../donationData";
 
 const initialState = {
-  projectData: null
+  projectData: []
 };
 
 const projectSlice = createSlice({
