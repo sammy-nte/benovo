@@ -71,31 +71,17 @@ function Home() {
               }}
             />
           </div>
-          <div className="mx-auto max-w-containerMax  py-32 sm:py-48 lg:py-56">
+          <div className="mx-auto max-w-containerMax  py-32 sm:py-48 lg:py-11">
             <div className="text-center">
               <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-                Make a Difference: Connect with NGOs Transforming Lives in Ghana
+                Support a worthy cause
               </h1>
-              <p className="mt-6 text-lg leading-8 text-textColor font-light">
-                Join us in transforming lives, one donation at a time. Our
-                platform seeks to bring NGOs under one roof, enabling us to make
-                a significant impact on the communities in Ghana. Together, we
-                can help them achieve their dreams and create a brighter future.
-              </p>
-              {/* <div className="mt-10 flex items-center justify-center gap-x-6">
-                <Link
-                  to="ngo-profile/eqWoQPuC5JSILLXWj7LFTVLu21Q2"
-                  className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                >
-                  Get started
-                </Link>
-                <Link
-                  to="about"
-                  className="text-sm font-semibold leading-6 text-gray-900 px-3.5 py-2 rounded-lg border-tempColor border-[1px] "
-                >
-                  Learn more <span aria-hidden="true">→</span>
-                </Link>
-              </div> */}
+              <p className="mt-1 text-lg leading-8 text-textColor font-light">Lend a hand whenever you can.</p>
+              <Link to="explore">
+                <button className="mt-10 w-[140px] h-8 bg-tempColor mr-2 rounded-md text-white font-medium text-sm hover:scale-110 transition-all">
+                  Make a donation
+                </button>
+              </Link>
             </div>
           </div>
           <div
@@ -115,7 +101,7 @@ function Home() {
       <section className="flex flex-col items-center justify-around mt-14 w-[90%] max-w-[1200px] mx-auto lg:flex-row lg:items-stretch">
         {/* <img src="../images/img.jpg" alt="" width="500" /> */}
 
-        <div className="mt-3 bg-slate-30 text-center">
+        {/* <div className="mt-3 bg-slate-30 text-center">
           <h3 className="font-medium text-2xl pb-4">
             <span className="before:block before:absolute before:-inset-1 before:bg-blue-500 relative inline-block">
               <span className="relative text-white">Benevo</span>
@@ -139,11 +125,11 @@ function Home() {
           <Link to="about">
             <Button btnText="Learn More" />
           </Link>
-        </div>
+        </div> */}
       </section>
       <section className=" max-w-containerMax mx-auto mt-20">
         <h3 className="text-center text-2xl capitalize font-semibold pt-3 pb-11 px-5">
-          our platform seeks to help in the following categories
+          Benevo seeks to help in the following categories
         </h3>
         <div className="flex flex-col gap-14 items-center lg:flex-row lg:gap-0 lg:justify-between">
           <CategoriesCard
@@ -171,7 +157,7 @@ function Home() {
           />
         </div>
       </section>
-      <section className="mt-[100px] w-[90%] mx-auto">
+      <section className="mt-[100px] w-[90%] mx-auto" id="how-to-use">
         <h3 className="text-center text-2xl capitalize font-semibold pt-3 pb-11 px-5">
           How to Use Benevo as a Donor
         </h3>
@@ -197,7 +183,7 @@ function Home() {
           text="Witness the power of your contributions. Track the progress of projects you've supported and see the difference your donations are making in the lives of individuals and communities. "
         />
       </section>
-      <section className="mt-[100px] w-[90%] mx-auto">
+      {/* <section className="mt-[100px] w-[90%] mx-auto">
         <h3 className="text-center text-2xl capitalize font-semibold pt-3 pb-11 px-5">
           How to Use Benevo as an NGO
         </h3>
@@ -222,7 +208,7 @@ function Home() {
           subTitle="Get Donations to help your cause"
           text="Share your campaigns with the Benevo community and beyond. Keep donors updated with progress reports and stories of impact. Engage with them through messages and acknowledgments, fostering a strong and supportive network of contributors."
         />
-      </section>
+      </section> */}
       <section className="mt-10">
         <h2 className="text-center text-2xl capitalize font-semibold pt-3 pb-11 px-5">
           Featured Campaigns

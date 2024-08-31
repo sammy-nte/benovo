@@ -110,7 +110,7 @@ function NgoProfile() {
 
   // console.log(profileInfo);
   return (
-    <div className="bg-red-10">
+    <div className="bg-red-">
       <section
         className="h-[320px] bg-no-repeat bg-cover bg-left-top"
         style={{

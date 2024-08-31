@@ -93,6 +93,9 @@ function Dashboard() {
 
         setShowCampaigns(dashboardCampaignList);
       }
+      else{
+        setShowCampaigns([])
+      }
     },
     [ngoInfo]
   );
