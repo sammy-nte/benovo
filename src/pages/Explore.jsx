@@ -1,15 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FilterSvg, SearchSvg } from "../components/Svgs/Svgs";
 import { setSearchQuery } from "../redux/redux-features/searchSlice";
 import CashCard from "../components/shared/DonationsCard/CashCard";
+import { useForm } from "react-hook-form";
 
 function Explore() {
   const { projectData } = useSelector(store => store.projects);
   const [scrollPosition, setScrollPosition] = useState(null);
-  const [inputValue, setInputValue] = useState("");
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { register, handleSubmit, formState: { errors } } = useForm({});
+  const onSubmit = data => {
+    navigate(`/search?query=${data.search}`);
+  };
   // function handleSearchInput(e) {
   //   e.preventDefault();
   //   dispatch(setSearchQuery(inputValue));
@@ -76,6 +82,64 @@ function Explore() {
                 Find campaigns by location, title, keyword, or a NGO’s name
               </p>
             </div>
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="px-4 w-full max-w-[330px] mx-auto mt-3"
+            >
+              <label
+                className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+                htmlFor="default-search"
+              >
+                Search
+              </label>
+              <div className="relative">
+                <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                  <svg
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                    className="w-4 h-4 text-gray-500 dark:text-gray-400"
+                  >
+                    <path
+                      d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                      strokeWidth="2"
+                      strokeLinejoin="round"
+                      strokeLinecap="round"
+                      stroke="currentColor"
+                    />
+                  </svg>
+                </div>
+                <input
+                  {...register("search")}
+                  placeholder="Search"
+                  className="block w-full ps-10 text-lg text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 outline-none focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  id="default-search"
+                  type="search"
+                />
+                <button
+                  type="submit"
+                  className="absolute end-2.5 bottom-1/2 translate-y-1/2 p-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                >
+                  <svg
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                    className="w-4 h-4"
+                  >
+                    <path
+                      d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                      strokeWidth="2"
+                      strokeLinejoin="round"
+                      strokeLinecap="round"
+                      stroke="currentColor"
+                    />
+                  </svg>
+                  <span className="sr-only">Search</span>
+                </button>
+              </div>
+            </form>
           </div>
           <div
             className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"

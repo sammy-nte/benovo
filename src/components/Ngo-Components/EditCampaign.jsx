@@ -24,6 +24,7 @@ function EditCampaign() {
   const onSubmit = async data => {
     const updates = {};
     if (data.campaignTitle) updates.campaignTitle = data.campaignTitle;
+    if (data.targetAmount) updates.targetAmount = data.targetAmount;
     if (data.campaignLocation) updates.campaignLocation = data.campaignLocation;
     if (data.telephone) {
       updates.contactInfo = {
@@ -82,6 +83,7 @@ function EditCampaign() {
 
       await batch.commit();
       toast.success("Campaign updated successfully");
+      dispatch(setCampaignEdit(null));
     } catch (error) {
       toast.error("Failed to update campaign");
       console.error(error);

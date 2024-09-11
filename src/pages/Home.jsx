@@ -166,7 +166,7 @@ function Home() {
           number="01"
           title="Discover"
           subTitle="Browse through various NGOs and projects."
-          text="Browse through a diverse array of NGOs and projects, each with a unique mission to make a difference. Discover inspiring initiatives spanning education, healthcare, environmental conservation, and more."
+          text="Browse through a diverse array of NGOs and projects, each with a unique mission to make a difference. Discover inspiring initiatives spanning education, healthcare, environmental conservation, and more. The monetary tag meaning the campaign is geared towards receiving funds and material means the campaign need material items other than funds"
         />
         <WorksCard
           opposites={false}
@@ -221,60 +221,6 @@ function Home() {
               <CardSkeleton />
               <CardSkeleton />
             </div>}
-      </section>
-      <section className="mt-24">
-        <h2 className="text-center text-2xl font-semibold pt-3 px-5">
-          Are you an NGO? You're in good company
-        </h2>
-        <div className="w-[90%] mx-auto lg:max-w-containerMax flex flex-col items-center">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <h2 className="text-center text-lg font-light leading-8 text-gray-900">
-              Trusted by top notch NGO'S
-            </h2>
-            <div className="mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5">
-              <img
-                className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
-                src="https://tailwindui.com/img/logos/158x48/transistor-logo-gray-900.svg"
-                alt="Transistor"
-                width={158}
-                height={48}
-              />
-              <img
-                className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
-                src="https://tailwindui.com/img/logos/158x48/reform-logo-gray-900.svg"
-                alt="Reform"
-                width={158}
-                height={48}
-              />
-              <img
-                className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
-                src="https://tailwindui.com/img/logos/158x48/tuple-logo-gray-900.svg"
-                alt="Tuple"
-                width={158}
-                height={48}
-              />
-              <img
-                className="col-span-2 max-h-12 w-full object-contain sm:col-start-2 lg:col-span-1"
-                src="https://tailwindui.com/img/logos/158x48/savvycal-logo-gray-900.svg"
-                alt="SavvyCal"
-                width={158}
-                height={48}
-              />
-              <img
-                className="col-span-2 col-start-2 max-h-12 w-full object-contain sm:col-start-auto lg:col-span-1"
-                src="https://tailwindui.com/img/logos/158x48/statamic-logo-gray-900.svg"
-                alt="Statamic"
-                width={158}
-                height={48}
-              />
-            </div>
-          </div>
-          <Link to="register">
-            <button className="w-[100px] h-8 mt-6 bg-tempColor mr-2 rounded-md text-white font-medium text-sm text-center">
-              Join us today
-            </button>
-          </Link>
-        </div>
       </section>
     </div>
   );

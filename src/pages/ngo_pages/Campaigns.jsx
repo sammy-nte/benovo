@@ -45,7 +45,6 @@ const getRandomProjects = (campaignData, count = 3) => {
   return results;
 };
 
-
 function Campaigns() {
   const [showCampaigns, setShowCampaigns] = useState([]);
   const [addCampaign, setAddCampaign] = useState(false);
@@ -60,8 +59,8 @@ function Campaigns() {
   const [completedFeaturedProjects, setCompletedFeaturedProjects] = useState(
     []
   );
-  const profileInfo = useLoaderData()
-  console.log(profileInfo[0].activeCampaigns)
+  const profileInfo = useLoaderData();
+  console.log(profileInfo[0].activeCampaigns);
 
   useEffect(
     () => {
@@ -88,7 +87,6 @@ function Campaigns() {
     },
     [activeCampaignData, completedCampaignData]
   );
-  
 
   // const cards = cardList.map(item => <DonorList key={item.name} data={item} />);
   const Dcards = showCampaigns.map(item =>
@@ -96,29 +94,37 @@ function Campaigns() {
   );
 
   const activeCards = expandActiveCampaigns
-  ? activeCampaignData.map((items, index) =>
-      <DashboardCampaignCard key={items.campaignTitle} data={items} index={index} />
-    )
-  : activeFeaturedProjects.map((items, index) =>
-      <DashboardCampaignCard key={items.campaignTitle} data={items} index={index} />
-    );
-const completedCards = expandActiveCampaigns
-  ? completedCampaignData.map((items, index) =>
-      <DashboardCampaignCard
-        completed={true}
-        key={items.campaignTitle}
-        data={items}
-        index={index}
-      />
-    )
-  : completedFeaturedProjects.map((items, index) =>
-      <DashboardCampaignCard
-        completed={true}
-        key={items.campaignTitle}
-        data={items}
-        index={index}
-      />
-    );
+    ? activeCampaignData.map((items, index) =>
+        <DashboardCampaignCard
+          key={items.campaignTitle}
+          data={items}
+          index={index}
+        />
+      )
+    : activeFeaturedProjects.map((items, index) =>
+        <DashboardCampaignCard
+          key={items.campaignTitle}
+          data={items}
+          index={index}
+        />
+      );
+  const completedCards = expandActiveCampaigns
+    ? completedCampaignData.map((items, index) =>
+        <DashboardCampaignCard
+          completed={true}
+          key={items.campaignTitle}
+          data={items}
+          index={index}
+        />
+      )
+    : completedFeaturedProjects.map((items, index) =>
+        <DashboardCampaignCard
+          completed={true}
+          key={items.campaignTitle}
+          data={items}
+          index={index}
+        />
+      );
   return (
     <>
       {addCampaign
@@ -128,56 +134,56 @@ const completedCards = expandActiveCampaigns
               onClick={() => {
                 setAddCampaign(true);
               }}
-              className="w-[130px] h-8 bg-tempColor m-2 rounded-md text-white font-medium text-sm hover:bg-violetLight self-end"
+              className="w-[130px] h-[100px] bg-tempColor m-2 rounded-md text-white font-medium text-sm hover:bg-violetLight self-end"
             >
               Add Campaign
             </button>
-            <section className="mt-8 flex flex-col items-center">
-                <h3 className="text-center my-4 font-medium text-lg">
-                  Active Campaigns
-                </h3>
-                {activeCards.length > 0
-                  ? <div className="grid grid-cols-1 gap-5  md:grid-cols-3 bg-white p-4 rounded-2xl">
-                      {activeCards}
-                    </div>
-                  : <div className="w-[600px] h-32 border-4 border-dashed grid place-content-center">
-                      <p className="text-gray-500 text-xl">
-                        There are currently no active campaigns
-                      </p>
-                    </div>}
-                {activeCards.length > 1 &&
-                  <button
-                    onClick={() => {
-                      setExpandActiveCampaigns(prevState => !prevState);
-                    }}
-                    className="w-[130px] mt-8 h-8 bg-white border-2 border-tempColor mr-2 rounded-md text-tempColor font-medium text-sm hover:bg-tempColor hover:text-white transition-all"
-                  >
-                    {expandActiveCampaigns ? "View Less" : "View More"}
-                  </button>}
-              </section>
-              <section className="mt-8 flex flex-col items-center">
-                <h3 className="text-center my-4 font-medium text-lg">
-                  Completed Campaigns
-                </h3>
-                {completedCards.length > 0
-                  ? <div className="grid grid-cols-1 gap-5  md:grid-cols-3 bg-white p-4 rounded-2xl">
-                      {completedCards}
-                    </div>
-                  : <div className="w-[600px] h-32 border-4 border-dashed grid place-content-center">
-                      <p className="text-gray-500 text-xl">
-                        There are currently no complete campaigns
-                      </p>
-                    </div>}
-                {completedCards.length > 1 &&
-                  <button
-                    onClick={() => {
-                      setExpandCompletedCampaigns(prevState => !prevState);
-                    }}
-                    className="w-[130px] mt-8 h-8 bg-white border-2 border-tempColor mr-2 rounded-md text-tempColor font-medium text-sm hover:bg-tempColor hover:text-white transition-all"
-                  >
-                    {expandCompletedCampaigns ? "View Less" : "View More"}
-                  </button>}
-              </section>
+            <section className="mt-8 flex flex-col">
+              <h3 className="text-center my-4 font-medium text-lg">
+                Active Campaigns
+              </h3>
+              {activeCards.length > 0
+                ? <div className="grid grid-cols-1 gap-5  md:grid-cols-3 bg-white p-4 rounded-2xl">
+                    {activeCards}
+                  </div>
+                : <div className="w-[600px] mx-auto h-32 border-4 border-dashed grid place-content-center">
+                    <p className="text-gray-500 text-xl">
+                      There are currently no active campaigns
+                    </p>
+                  </div>}
+              {activeCards.length > 1 &&
+                <button
+                  onClick={() => {
+                    setExpandActiveCampaigns(prevState => !prevState);
+                  }}
+                  className="w-[130px] mt-8 h-8 bg-white border-2 border-tempColor mr-2 rounded-md text-tempColor font-medium text-sm hover:bg-tempColor hover:text-white transition-all self-center"
+                >
+                  {expandActiveCampaigns ? "View Less" : "View More"}
+                </button>}
+            </section>
+            <section className="mt-8 flex flex-col items-cente">
+              <h3 className="text-center my-4 font-medium text-lg">
+                Completed Campaigns
+              </h3>
+              {completedCards.length > 0
+                ? <div className="grid grid-cols-1 gap-5  md:grid-cols-3 bg-white p-4 rounded-2xl">
+                    {completedCards}
+                  </div>
+                : <div className="w-[600px] h-32 border-4 border-dashed grid place-content-center">
+                    <p className="text-gray-500 text-xl">
+                      There are currently no complete campaigns
+                    </p>
+                  </div>}
+              {completedCards.length > 1 &&
+                <button
+                  onClick={() => {
+                    setExpandCompletedCampaigns(prevState => !prevState);
+                  }}
+                  className="w-[130px] mt-8 h-8 bg-white border-2 border-tempColor mr-2 rounded-md text-tempColor font-medium text-sm hover:bg-tempColor hover:text-white transition-all"
+                >
+                  {expandCompletedCampaigns ? "View Less" : "View More"}
+                </button>}
+            </section>
           </section>}
     </>
   );

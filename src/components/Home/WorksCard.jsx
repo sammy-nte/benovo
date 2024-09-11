@@ -1,6 +1,6 @@
 import React from "react";
 
-function WorksCard({ title, subTitle, text, number, opposites }) {
+function WorksCard({ title, subTitle, text, number, opposites, children }) {
   const reverseStyle = {
     flexDirection: opposites ? "row-reverse" : "row"
   };
@@ -27,6 +27,7 @@ function WorksCard({ title, subTitle, text, number, opposites }) {
           <p className="font-light text-gray-500 ">
             {text}
           </p>
+          {children}
         </div>
       </div>
     </div>

@@ -15,6 +15,7 @@ import {
   where,
   updateDoc
 } from "firebase/firestore";
+import { setModalData } from "../../redux/redux-features/modalDataSlice";
 
 function DeactivateCampaign() {
   const { Dedetails } = useSelector(store => store.deactivate);
@@ -72,6 +73,7 @@ function DeactivateCampaign() {
       await deleteDoc(activeCampaignDoc.ref);
 
       toast.success("Campaign deleted successfully.");
+      dispatch(closeModal());
     } catch (error) {
       console.error("Error deleting campaign:", error);
       toast.error("An error occurred while deleting the campaign.");

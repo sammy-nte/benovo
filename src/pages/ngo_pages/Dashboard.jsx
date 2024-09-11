@@ -34,7 +34,7 @@ export async function loader() {
 }
 
 function Dashboard() {
-  const [donorType, setDonorType] = useState("monetary");
+  const [donorType, setDonorType] = useState("material");
   const [cardList, setCardList] = useState([]);
   const [showCampaigns, setShowCampaigns] = useState([]);
   const dispatch = useDispatch();
@@ -85,16 +85,15 @@ function Dashboard() {
       ) {
         const activeCampaigns = ngoInfo[0].activeCampaigns;
         let dashboardCampaignList = [];
-        const loopAmount = Math.min(4, activeCampaigns.length); // Limit loopAmount to the length of activeCampaigns
+        const loopAmount = Math.min(3, activeCampaigns.length); // Limit loopAmount to the length of activeCampaigns
 
         for (let i = 0; i < loopAmount; i++) {
           dashboardCampaignList.push(activeCampaigns[i]);
         }
 
         setShowCampaigns(dashboardCampaignList);
-      }
-      else{
-        setShowCampaigns([])
+      } else {
+        setShowCampaigns([]);
       }
     },
     [ngoInfo]
@@ -127,21 +126,21 @@ function Dashboard() {
             <div className="">
               <button
                 onClick={() => {
-                  setDonorType("monetary");
-                }}
-                style={MonetaryBtn}
-                className="lg:w-[100px] bg-slate-4 shadow-md border-2 mx-1 rounded-md p-1 font-medium  hover:bg-tempColor hover:text-white transition-all hover:shadow-none"
-              >
-                Monetary
-              </button>
-              <button
-                onClick={() => {
                   setDonorType("material");
                 }}
                 style={MaterialBtn}
                 className="lg:w-[100px] bg-slate-4 shadow-md border-2 mx-1 rounded-md p-1 font-medium text-textColor hover:bg-tempColor hover:text-white transition-all hover:shadow-none"
               >
                 Material
+              </button>
+              <button
+                onClick={() => {
+                  setDonorType("monetary");
+                }}
+                style={MonetaryBtn}
+                className="lg:w-[100px] bg-slate-4 shadow-md border-2 mx-1 rounded-md p-1 font-medium  hover:bg-tempColor hover:text-white transition-all hover:shadow-none"
+              >
+                Monetary
               </button>
             </div>
           </div>
@@ -202,14 +201,14 @@ function Dashboard() {
             <p className="font-medium text-gray-400 text-sm -mt-2">
               Donations Today
             </p>
-          </div>
+          </div> */}
           <div className="rounded-xl w-[150px] h-[130px] bg-gradient-to-tr from-white via-[#f8fefe] to-[#d7f4f7] border flex flex-col justify-around p-3 ">
             <CursorArrowRaysIcon className="size-8" />
             <p className="font-medium text-textColor">0</p>
             <p className="font-medium text-gray-400 text-sm -mt-2">
               Views Today
             </p>
-          </div> */}
+          </div>
           <div className="rounded-xl w-[150px] h-[130px] bg-gradient-to-tr from-white via-[#f8fefe] to-[#d7f4f7] border flex flex-col justify-around p-3 ">
             <UsersIcon className="size-8" />
             <p className="font-medium text-textColor">
@@ -225,14 +224,14 @@ function Dashboard() {
             <p className="font-medium text-gray-400 text-sm -mt-2">
               Total Donations
             </p>
-          </div>
+          </div> */}
           <div className="rounded-xl w-[150px] h-[130px] bg-gradient-to-tr from-white via-[#f8fefe] to-[#d7f4f7] border flex flex-col justify-around p-3 ">
             <CursorArrowRaysIcon className="size-8" />
-            <p className="font-medium text-textColor">0</p>
+            <p className="font-medium text-textColor">o0</p>
             <p className="font-medium text-gray-400 text-sm -mt-2">
               Total Views
             </p>
-          </div> */}
+          </div>
           <div className="rounded-xl w-[150px] h-[130px] bg-gradient-to-tr from-white via-[#f8fefe] to-[#d7f4f7] border flex flex-col justify-around p-3 ">
             <UsersIcon className="size-8" />
             <p className="font-medium text-textColor">

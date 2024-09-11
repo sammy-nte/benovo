@@ -21,6 +21,7 @@ function AddCampaign({ setAddCampaign }) {
     }
   });
   const campaignType = watch("campaignType");
+  const category = watch("category");
   const onSubmit = async data => {
     const date = new Date();
     const options = { year: "numeric", month: "2-digit", day: "2-digit" };
@@ -38,7 +39,7 @@ function AddCampaign({ setAddCampaign }) {
 
     function createCampaignData(data, imageUrl) {
       const baseCampaignData = {
-        organization: "Clean Oceans",
+        organization: "The Helpers",
         campaignTitle: data.campaignTitle,
         campaignType: data.campaignType,
         backstory: data.backstory,
@@ -51,7 +52,8 @@ function AddCampaign({ setAddCampaign }) {
         contactInfo: {
           email: email,
           phone: data.telephone
-        }
+        },
+        category: data.category
       };
 
       if (data.campaignType === "monetary") {
@@ -64,6 +66,12 @@ function AddCampaign({ setAddCampaign }) {
         return {
           ...baseCampaignData,
           itemsGotten: 0
+        };
+      }
+      if (data.category === "others") {
+        return {
+          ...baseCampaignData,
+          categoryOthers: data.categoryOthers
         };
       }
     }
@@ -96,7 +104,7 @@ function AddCampaign({ setAddCampaign }) {
         ...campaignWithId
       });
       toast.success("Campaign posted successfully");
-      setAddCampaign(false)
+      setAddCampaign(false);
     } catch (error) {
       console.error("Error adding campaign:", error);
       toast.error("Campaign failed to post: " + error.message);
@@ -121,14 +129,17 @@ function AddCampaign({ setAddCampaign }) {
 
   return (
     <div className="bg-[#f6f6f6] w-full h-[90vh] overflow-y-auto ">
-      <div className="flex min-h-full  flex-col justify-center px-6 py-12 lg:px-8">
+      <div className="flex min-h-full bg-red-30 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm flex items-center flex-col">
           <h2 className="text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             New Campaign
           </h2>
         </div>
 
-        <form className=" mx-auto" onSubmit={handleSubmit(onSubmit)}>
+        <form
+          className="max-w-containerMax bg-green-40 x-auto"
+          onSubmit={handleSubmit(onSubmit)}
+        >
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             <div className="sm:col-span-3">
               <label
@@ -218,6 +229,45 @@ function AddCampaign({ setAddCampaign }) {
                 />
               </div>
             </div>
+            <div className="sm:col-span-3">
+              <label
+                htmlFor="category"
+                className="text-base font-semibold leading-7 text-gray-900 -mb-6"
+              >
+                Category
+              </label>
+              <div className="mt-2">
+                <select
+                  {...register("category")}
+                  id="category"
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                >
+                  <option value="medical">Medical</option>
+                  <option value="education">Education</option>
+                  <option value="animal">Animal</option>
+                  <option value="environment">Environment</option>
+                  <option value="community">Community</option>
+                  <option value="others">Others</option>
+                </select>
+              </div>
+            </div>
+            {category === "others" &&
+              <div className="sm:col-span-3">
+                <label
+                  htmlFor="categoryOthers"
+                  className="text-base font-semibold leading-7 text-gray-900 -mb-6"
+                >
+                  Others
+                </label>
+                <div className="mt-2">
+                  <input
+                    {...register("categoryOthers")}
+                    type="text"
+                    id="categoryOthers"
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  />
+                </div>
+              </div>}
           </div>
           <div className="space-y-12">
             <div className="border-b border-gray-900/10 pb-12">

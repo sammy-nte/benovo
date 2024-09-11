@@ -68,10 +68,10 @@ function CashCard({ items, index, completed }) {
         {campaignType === "monetary"
           ? <div>
               <p className="font-semibold">
-                Target Amount: ${targetAmount}
+                Target Amount: ₵{targetAmount}
               </p>
               <p className="text-gray-500 ">
-                Amount Raised: ${currentAmount}
+                Amount Raised: ₵{currentAmount}
               </p>
             </div>
           : ""}

@@ -38,6 +38,11 @@ import EditCampaign from "./components/Ngo-Components/EditCampaign";
 import MaterialDonation from "./components/MaterialDonation";
 import DeactivateCampaign from "./components/Ngo-Components/DeactivateCampaign";
 import { data } from "autoprefixer";
+import CategoriesPage from "./pages/CategoriesPage";
+import CategoryDetail from "./pages/CategoryDetail";
+import SearchPage from "./pages/SearchPage";
+import NgoSignUp from "./pages/NgoSignUp";
+import ForNgos from "./pages/ForNgos";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -47,6 +52,9 @@ const router = createBrowserRouter(
         <Route path="contact" element={<Contact />} />
         <Route path="about" element={<About />} />
         <Route path="explore" element={<Explore />} />
+        <Route path="categories" element={<CategoriesPage />} />
+        <Route path="categories/:category" element={<CategoryDetail />} />
+        <Route path="search" element={<SearchPage />} />
         <Route
           path="ngo-profile/:ngoId"
           element={<NgoProfile />}
@@ -56,6 +64,8 @@ const router = createBrowserRouter(
       <Route element={<SignRegLayout />}>
         <Route path="register" element={<Register />} />
       </Route>
+      <Route path="ngo-signup" element={<NgoSignUp />} />
+      <Route path="for-ngos" element={<ForNgos />} />
       <Route path="sign-in" element={<SignIn />} />
       <Route path="ngo" element={<NgoPageLayout />}>
         <Route
@@ -65,7 +75,11 @@ const router = createBrowserRouter(
           loader={DashboardLoader}
         />
         <Route path="profile" element={<Profile />} loader={ProfileLoader} />
-        <Route path="campaigns" element={<Campaigns />} loader={CampaignLoader} />
+        <Route
+          path="campaigns"
+          element={<Campaigns />}
+          loader={CampaignLoader}
+        />
       </Route>
     </Route>
   )
@@ -79,7 +93,7 @@ function App() {
   const { editCampaign } = useSelector(store => store.campaignEdit);
   // const { menu } = useSelector(store => store.menu);
   const { materialForm } = useSelector(store => store.donateForm);
-  const { Dedetails  } = useSelector(store => store.deactivate);
+  const { Dedetails } = useSelector(store => store.deactivate);
 
   useEffect(
     () => {
